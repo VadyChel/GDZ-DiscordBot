@@ -18,6 +18,8 @@ class Errors(commands.Cog):
 					colour=discord.Color.red()
 				)
 			)
+		else:
+			raise error
 
 def setup(client):
 	client.add_cog(Errors(client))

@@ -6,11 +6,19 @@ class Help(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 
-	@commands.command(aliases=["хелп"])
+	@commands.command(
+		aliases=["хелп"],
+		description="Показывает список доступных команд"
+	)
 	async def help(self, ctx):
 		emb = discord.Embed(title="Доступные команды", colour=discord.Color.red())
-		for command in self.client.get_commands():
-			emb.add_field(name=self.client.get_prefix()+command.name, value=command.description)
+		for cog in self.client.cogs:
+			for command in self.client.get_cog(cog).get_commands():
+				emb.add_field(
+					name=await self.client.get_prefix(ctx.message)+command.name, 
+					value=f"""{"Алиасы: "+", ".join(command.aliases) if command.aliases != [] else ""}\n{command.description}""",
+					inline=False
+				)
 
 		await ctx.send(embed=emb)
 
