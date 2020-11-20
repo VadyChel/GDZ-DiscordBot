@@ -15,7 +15,7 @@ class Help(commands.Cog):
 		for cog in self.client.cogs:
 			for command in self.client.get_cog(cog).get_commands():
 				emb.add_field(
-					name=await self.client.get_prefix(ctx.message)+command.name, 
+					name=f"{await self.client.get_prefix(ctx.message)+command.name} {command.usage}", 
 					value=f"""{"Алиасы: "+", ".join(command.aliases) if command.aliases != [] else ""}\n{command.description}""",
 					inline=False
 				)
