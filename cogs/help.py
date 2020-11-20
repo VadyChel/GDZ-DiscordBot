@@ -16,7 +16,7 @@ class Help(commands.Cog):
 		for cog in self.client.cogs:
 			for command in self.client.get_cog(cog).get_commands():
 				emb.add_field(
-					name=f"{PREFIX+command.name} {command.usage}", 
+					name=f"{PREFIX+command.name} {command.usage if command.usage is not None else ""}", 
 					value=f"""{"Алиасы: "+", ".join(command.aliases) if command.aliases != [] else ""}\n{command.description}""",
 					inline=False
 				)
