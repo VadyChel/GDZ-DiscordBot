@@ -1,7 +1,6 @@
 import os
 import discord
 from colorama import *
-from config import Config
 from discord.ext import commands
 
 init()
