@@ -54,4 +54,4 @@ for filename in os.listdir("./cogs"):
 		print(Fore.GREEN + f"[GDZ-SYSTEM-COG]:::{filename[:-3].upper()} - Loaded")
 
 print(Fore.RESET)
-client.run(Config.TOKEN)
+client.run(os.environ["BOT_TOKEN"])
