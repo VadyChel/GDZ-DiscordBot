@@ -30,7 +30,7 @@ async def on_ready():
 async def on_command(ctx):
 	if ctx.command is not None and ctx.command.name in [
 		alias for c in client.get_cog("GDZ").get_commands() for alias in c.aliases
-	] + [c.name for c in client.get_cog("GDZ").get_commands()]:
+	] + [c.name for c in client.get_cog("GDZ").get_commands()] and ctx.args[2] is not None:
 		Database().set_log(
 			member=ctx.author, num=int(ctx.args[2]), name=ctx.command.name
 		)
