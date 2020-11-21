@@ -5,8 +5,8 @@ from pymongo import MongoClient
 
 class Database:
 	def __init__(self):
-		self._dbname = os.environ.get("DATABASE_NAME") or "GDZ-BotDB"
-		self._dbpass = os.environ.get("DATABASE_PASS") or "wsn5vYzdG3GrUZx"
+		self._dbname = os.environ.get("DATABASE_NAME")
+		self._dbpass = os.environ.get("DATABASE_PASS")
 		self.cluster = MongoClient(
 			f"mongodb+srv://vadym:{self._dbpass}@gdz-botdb.5lufl.mongodb.net/{self._dbname}?retryWrites=true&w=majority"
 		)
