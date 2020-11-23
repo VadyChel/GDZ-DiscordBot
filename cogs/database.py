@@ -27,16 +27,10 @@ class Database:
 			"time": time.time()
 		})
 
-	def get_logs(self, member:discord.Member) -> list:
+	def get_logs(self, member:discord.Member=None) -> list:
 		if member is not None:
 			return self.collection.find({
 				"member_id": member.id
 			})
 		else:
 			return self.collection.find()
-
-	def del_log(self):
-		pass
-
-	def get_log(self):
-		pass

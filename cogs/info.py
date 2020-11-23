@@ -54,7 +54,7 @@ class Help(commands.Cog):
 	)
 	@commands.has_any_role(761138578331795466, 761138858715774986, 761138258310463539)
 	async def history(self, ctx):
-		data = Database().get_logs(ctx.author)
+		data = Database().get_logs()
 		emb = discord.Embed(title="История поиска всех участников", colour=discord.Color.red())
 
 		for request in data:
