@@ -124,7 +124,7 @@ class GDZ(commands.Cog):
 		usage="[Номер задания]",
 	)
 	async def geometry(self, ctx, number):
-		pass
+		print("g")
 
 	@commands.command(
 		aliases=["укр-язык", "укр-мова"],
