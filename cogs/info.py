@@ -10,14 +10,15 @@ class Help(commands.Cog):
 
 	@commands.command(
 		aliases=["хелп"],
-		description="Показывает список доступных команд"
+		description="Показывает список доступных команд",
+		usage=""
 	)
 	async def help(self, ctx):
 		PREFIX = await self.client.get_prefix(ctx.message)
 		emb = discord.Embed(title="Доступные команды", colour=discord.Color.red())
 
 		def get_command_desc(command:commands.command) -> str:
-			return " "+command.usage+" ⭐" if command.usage is not None else ""
+			return " "+command.usage+" ⭐" if command.hidden else " "+command.usage
 
 		for cog in self.client.cogs:
 			for command in self.client.get_cog(cog).get_commands():
@@ -30,8 +31,10 @@ class Help(commands.Cog):
 		await ctx.send(embed=emb)
 
 	@commands.command(
+		name="my-history",
 		aliases=['моя-история'],
-		description="Показывает список ваших запросов"
+		description="Показывает список ваших запросов",
+		usage=""
 	)
 	async def my_history(self, ctx):
 		data = Database().get_logs(ctx.author)
@@ -50,7 +53,8 @@ class Help(commands.Cog):
 	@commands.command(
 		aliases=['история'],
 		description="Показывает список всех запросов сервера",
-		hidden=True
+		hidden=True,
+		usage=""
 	)
 	@commands.has_any_role(761138578331795466, 761138858715774986, 761138258310463539)
 	async def history(self, ctx):
